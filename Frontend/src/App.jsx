@@ -11,7 +11,8 @@ import Footer from './components/Footer'
 function App() {
   return (
     <>
-      <Navbar />
+       
+        <Navbar />
        <div className='h-full'>
         <Routes>
           <Route path='/' element={<HomePage />} />
@@ -27,3 +28,4 @@ function App() {
 }
 
 export default App
+
