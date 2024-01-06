@@ -1,31 +1,49 @@
-import {Routes, Route} from 'react-router-dom'
-import CreatePage from "./pages/CreatePage"
-import EditPage from "./pages/EditPage"
-import HomePage from "./pages/HomePage"
-import NotFound from "./pages/NotFound"
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import CreatePage from './pages/CreatePage';
+import EditPage from './pages/EditPage';
+import NotFound from './pages/NotFound';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './config';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+
   return (
     <>
-       
-        <Navbar />
-       <div className='h-full'>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/create' element={<CreatePage />} />
-          <Route path='/edit/:id' element={<EditPage />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+      <Navbar user={user} />
+      <div className='h-full'>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {user !== null ? (
+          <>
+            <Route path="/create" element={<CreatePage />} />
+            <Route path="/edit/:id" element={<EditPage />} />
+          </>
+        ) : (
+          <Route path="*" element={<Navigate to="/" replace />} />
+        )}
+      </Routes>
       </div>
+      
       <Footer />
       <ToastContainer />
     </>
-  )
+  );
 }
 
-export default App
-
+export default App;
