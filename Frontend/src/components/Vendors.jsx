@@ -30,7 +30,7 @@ export default function Vendors({ vendors, getVendors }) {
     if (result.isConfirmed) {
       try {
         setIsLoading(true);
-        await fetch(`http://localhost:8080/api/vendors/${id}`, {
+        await fetch(`https://backend-vendor-management.onrender.com/api/vendors/${id}`, {
           method: 'DELETE',
         });
 

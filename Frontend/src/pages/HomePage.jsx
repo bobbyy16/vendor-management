@@ -25,7 +25,7 @@ export default function HomePage() {
   const fetchApi = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('http://localhost:8080/api/vendors');
+        const response = await fetch('https://backend-vendor-management.onrender.com/api/vendors');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

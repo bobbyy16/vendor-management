@@ -25,7 +25,7 @@ export default function EditPage() {
       try {
         setIsLoading(true);
 
-        const response = await fetch(`http://localhost:8080/api/vendors/${id}`);
+        const response = await fetch(`https://backend-vendor-management.onrender.com/api/vendors/${id}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch vendor');
@@ -62,7 +62,7 @@ export default function EditPage() {
         
         setIsLoading(true)
 
-        await fetch(`http://localhost:8080/api/vendors/${id}`, {
+        await fetch(`https://backend-vendor-management.onrender.com/api/vendors/${id}`, {
         method: 'PUT',
         headers :{
           'Content-Type' : 'application/json'
