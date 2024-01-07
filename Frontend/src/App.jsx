@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import CreatePage from './pages/CreatePage';
 import EditPage from './pages/EditPage';
-import NotFound from './pages/NotFound';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config';
 import { ToastContainer } from 'react-toastify';
@@ -25,7 +24,8 @@ function App() {
 
   return (
     <>
-      <Navbar user={user} />
+
+        <Navbar user={user} />
       <div className='h-full'>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -42,6 +42,7 @@ function App() {
       
       <Footer />
       <ToastContainer />
+      
     </>
   );
 }

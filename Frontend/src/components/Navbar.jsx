@@ -42,16 +42,34 @@ export default function Navbar() {
           </h1>
         </Link>
         <div className="flex items-center space-x-4">
-          <Link to="/">
-            <button className="bg-orange-700 text-white px-4 py-2 rounded-md">
-              Home
-            </button>
-          </Link>
-          <Link to="/create">
-            <button className="bg-orange-700 text-white px-4 py-2 rounded-md">
-              Create
-            </button>
-          </Link>
+          {user ? (
+            <>
+              <Link to="/">
+                <button className="bg-orange-700 text-white px-4 py-2 rounded-md">
+                  Home
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+            
+            </>
+          ) }
+
+          {user ? (
+            <>
+              <Link to="/create">
+                <button className="bg-orange-700 text-white px-4 py-2 rounded-md">
+                  Create
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+            
+            </>
+          ) }
+          
           {user ? (
             <>
               <button
