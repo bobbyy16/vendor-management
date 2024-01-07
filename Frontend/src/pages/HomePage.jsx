@@ -71,7 +71,8 @@ export default function HomePage() {
           <>
             {vendors.length > 0 ? (
               <>
-               <table className="min-w-200 bg-white border border-gray-300 shadow-md rounded-md overflow-hidden mt-0">
+              <div className='hidden sm:block'>
+              <table className="min-w-200 bg-white border border-gray-300 shadow-md rounded-md overflow-hidden mt-0">
                     <thead className="bg-gray-800 text-white">
                         <tr>
                         <th className="py-2 px-2 border-b text-center">Vendor Name</th>
@@ -100,6 +101,11 @@ export default function HomePage() {
                       paginate={paginate}
                     />
                     </table>
+
+              </div>
+              <div className="sm:hidden">
+                      <h1 className='text-6xl text-center font-bold text-orange-800'>Please view on large screen</h1>
+                </div>
 
               </>
             ) : (
