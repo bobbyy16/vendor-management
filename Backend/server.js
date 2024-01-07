@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const db = process.env.MONGODB_URL;
 // const secret = process.env.SESSION_SECRET;
 // const clientid = process.env.GOOGLE_CLIENT_ID
